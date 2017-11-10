@@ -2,16 +2,10 @@ module.exports = class Device {
 
     constructor(settings = {}) {
 
-        this.name = settings.name || 'Name is not set';
+        this.type = settings.type || 'Unknown device';
+        this.id = this.__generateUniqueId();
         this.isEnabled = false;
-        this.id = this._generateUniqueID();
     };
-
-    // TODO: Create logic for id
-    _generateUniqueID() {
-
-        return '123';
-    }
 
     turnOn() {
 
@@ -22,6 +16,11 @@ module.exports = class Device {
 
         this.isEnabled = false;
 
+    }
+
+    __generateUniqueId(){
+
+        return this.type + '_' + Math.random().toString(36).substr(2, 9);
     }
 
 }

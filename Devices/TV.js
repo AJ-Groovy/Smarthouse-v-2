@@ -4,7 +4,7 @@ module.exports = class TV extends Device {
 
     constructor(settings = {}) {
 
-        super('TV');
+        super({ type: 'TV'});
         this.channels = settings.channels || [];
         this.currentChannel = this.channels[0];
     }
@@ -45,12 +45,10 @@ module.exports = class TV extends Device {
 
     }
 
+    setChannel(channel) {
 
-}
 
-setChannel(channel) {
+    }
 
-    
-}
 
 }
