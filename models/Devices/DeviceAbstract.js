@@ -1,3 +1,5 @@
+let counter = 0;
+
 module.exports = class Device {
 
     constructor(settings = {}) {
@@ -19,8 +21,9 @@ module.exports = class Device {
     }
 
     __generateUniqueId(){
-
-        return this.type + '_' + Math.random().toString(36).substr(2, 9);
+        // const date = new Date();
+        // return this.type + '_' + date.getTime();
+        return counter++;
     }
 
 }
