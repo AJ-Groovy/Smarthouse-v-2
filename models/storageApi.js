@@ -31,4 +31,7 @@ deviceStorageApi.delete = (req, res) => {
     };
 }
 
+deviceStorageApi.turnOnDevice = (id) => DeviceStorage.items[id].turnOn();
+deviceStorageApi.turnOffDevice = (id) => DeviceStorage.items[id].turnOff();
+
 module.exports = deviceStorageApi;

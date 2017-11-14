@@ -18,4 +18,22 @@ router.get('/devices/:id', (req, res) => {
 router.get('/api/devices', deviceStorageApi.getAll);
 // router.get('/api/devices/:id', deviceStorageApi.get);
 
+router.use('api/devices/:id?status=on', (req, res) => {
+
+    if (req.method == 'PUT') {
+
+        deviceStorageApi.turnOnDevice(req.params.id);
+    }
+});
+
+router.use('api/devices/:id?status=off', (req, res) => {
+
+    if (req.method == 'PUT') {
+
+        deviceStorageApi.turnOffDevice(req.params.id);
+    }
+});
+
+
+
 router.listen(3000);
