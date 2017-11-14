@@ -15,6 +15,14 @@ module.exports = class Storage {
         return this.items;
     }
 
+    remove(id){
+
+        this.items = this.items.filter((device) => {
+
+            return device.id !== id;
+        });
+    }
+
     clear(){
         this.items = {};
     }
