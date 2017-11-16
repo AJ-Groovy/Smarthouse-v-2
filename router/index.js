@@ -1,7 +1,5 @@
 const express = require('express');
 const modelApi = require('../controllers/modelApi');
-const hbs = require('hbs');
-
 
 const router = express.Router();
 

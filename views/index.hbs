@@ -6,61 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Application</title>
-    <style>
-        .item_container {
-
-            display: flex;
-        }
-
-        .item {
-
-            flex: 1 1 250px;
-            background-color: #999;
-            border-radius: 15px;
-            max-width: 30%;
-            height: 300px;
-            margin: 10px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: space-between;
-
-
-        }
-
-        .status {
-
-            background-color: #f00;
-            margin: 20px;
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-        }
-
-        .item[data-status="on"] .status {
-
-            background-color: #0f0;
-        }
-
-        .toggle {
-
-            margin-bottom: 15px;
-        }
-    </style>
+    <link rel="stylesheet" href="public/style.css">
+    
 </head>
 
 <body>
     <div class="app">
         <div class="item_container">
             {{!-- {{#if }} --}}
-            {{#each this}} 
-                {{#if type}}
-                    <div data-status="off" class="item">
-                        <div class="status"></div>
-                        <button class="toggle">Кнопка {{type}}</button>
-                    </div>
-                {{/if}}
-            {{/each}}
         </div>
     </div>
 </body>
