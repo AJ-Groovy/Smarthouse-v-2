@@ -13,7 +13,7 @@
         }
 
         .item {
-            
+
             flex: 1 1 250px;
             background-color: #999;
             border-radius: 15px;
@@ -46,21 +46,20 @@
 
             margin-bottom: 15px;
         }
-
     </style>
 </head>
 
 <body>
     <div class="app">
         <div class="item_container">
-            <div data-status="off" class="item">
-                <div class="status"></div>
-                <button class="toggle">Кнопка {{type}}</button>
-            </div>
-            <div data-status="off" class="item">
-                <div class="status"></div>
-                <button class="toggle">Кнопка</button>
-            </div>
+            {{#each this}} 
+                {{#if type}}
+                    <div data-status="off" class="item">
+                        <div class="status"></div>
+                        <button class="toggle">Кнопка {{type}}</button>
+                    </div>
+                {{/if}}
+            {{/each}}
         </div>
     </div>
 </body>
