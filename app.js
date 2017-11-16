@@ -4,12 +4,10 @@ const hbs = require('hbs');
 
 const app = express();
 
-
-hbs.registerPartials(__dirname + 'views/partials');
 app.set('view engine', 'hbs');
 app.use('/public', express.static(__dirname + "/views/public"));
+// hbs.registerPartial('multiple', {multiple});
+
 app.use(router);
 
 app.listen(3000);
-
-// router.use(express.static(__dirname + "/ views/public"));

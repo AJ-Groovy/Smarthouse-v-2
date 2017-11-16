@@ -7,15 +7,27 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Application</title>
     <link rel="stylesheet" href="public/style.css">
-    
+
 </head>
 
 <body>
     <div class="app">
         <div class="item_container">
-            {{!-- {{#if }} --}}
+            {{#each this}} {{#if type}}
+            <div data-status="off" class="item">
+                <div class="status"></div>
+                <div class="type">{{type}}{{id}}</div>
+                <button class="toggle">Кнопка</button>
+            </div>
+            {{/if}} {{/each}}
         </div>
     </div>
+    <footer class="controls">
+        <form action="/devices" method="post">
+            <input type="text">
+            <input type="submit">
+        </form>
+    </footer>
 </body>
 
 </html>

@@ -1,5 +1,6 @@
 const router = require('../router');
 const storage = require('../models');
+
 const modelControllApi = {};
 
 modelControllApi.getAll = (req, res) => {
@@ -19,6 +20,8 @@ modelControllApi.delete = (req, res) => {
         res.end();
     };
 }
+
+
 
 modelControllApi.turnOnDevice = (id) => storage.items[id].turnOn();
 modelControllApi.turnOffDevice = (id) => storage.items[id].turnOff();
