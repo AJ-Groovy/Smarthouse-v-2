@@ -1,5 +1,6 @@
 const router = require('../router');
 const storage = require('../models');
+const createDevice = require('../models/Devices/deviceFactory');
 
 const modelControllApi = {};
 
@@ -21,7 +22,12 @@ modelControllApi.delete = (req, res) => {
     };
 }
 
+modelControllApi.create = (req, res) => {
 
+    let device = createDevice(req.body.type, req.body.settings);
+    storage.set(device.id, device);
+    res.render('index.hbs', storage.getAll());
+}
 
 modelControllApi.turnOnDevice = (id) => storage.items[id].turnOn();
 modelControllApi.turnOffDevice = (id) => storage.items[id].turnOff();
