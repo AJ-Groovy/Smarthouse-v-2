@@ -14,10 +14,15 @@
     <div class="app">
         <div class="item_container">
             {{#each this}} {{#if type}}
-            <div data-status="off" class="item">
+            <div id="{{id}}" data-enabled="{{isEnabled}}" class="item">
                 <div class="status"></div>
                 <div class="type">{{type}}{{id}}</div>
-                <button class="toggle">Кнопка</button>
+                {{#if channels}}
+                    <button>prev</button>
+                    <p>{{currentChannel}}</p>
+                    <button>next</button>
+                {{/if}}
+                <a href="/devices/{{id}}/changestatus" class="toggle">Кнопка</a>
             </div>
             {{/if}} {{/each}}
         </div>

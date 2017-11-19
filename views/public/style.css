@@ -48,7 +48,7 @@
         border-radius: 50%;
     }
 
-    .item[data-status="on"] .status {
+    .item[data-enabled="true"] .status {
 
         background-color: #0f0;
     }

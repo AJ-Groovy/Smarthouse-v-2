@@ -6,7 +6,7 @@ const app = express();
     
 app.set('view engine', 'hbs');
 app.use('*?/public/', express.static(__dirname + "/views/public"));   
-// hbs.registerPartial('multiple', {multiple});
+// hbs.registerPartial('multiple', {{}} );
 
 app.use(router);
 
