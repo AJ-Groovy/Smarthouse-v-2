@@ -32,8 +32,18 @@ modelControllApi.turnOnDevice = (req, res) => {
     storage.items[req.params.id].turnOn();
     res.render('index.hbs', storage.getAll());
 }
-modelControllApi.turnOffDevice = (id) => storage.items[id].turnOff();
+modelControllApi.turnOffDevice = (req, res) => {
+    storage.items[req.params.id].turnOff();
+    res.render('index.hbs', storage.getAll());
+}
 
-modelControllApi.nextChannel = (id) => storage.items[id].nextChannel(); 
+modelControllApi.nextChannel = (req, res) => {
+    storage.items[req.params.id].nextChannel();
+    res.render('index.hbs', storage.getAll());
+} 
+modelControllApi.previousChannel = (req, res) => {
+    storage.items[req.params.id].previousChannel();
+    res.render('index.hbs', storage.getAll());
+} 
 
 module.exports = modelControllApi;

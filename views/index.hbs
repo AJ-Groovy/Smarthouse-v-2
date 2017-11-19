@@ -18,11 +18,14 @@
                 <div class="status"></div>
                 <div class="type">{{type}}{{id}}</div>
                 {{#if channels}}
-                    <button>prev</button>
+                    <a href="/devices/{{id}}/changechannel/next">prev</a>
                     <p>{{currentChannel}}</p>
-                    <button>next</button>
+                    <a href="/devices/{{id}}/changechannel/prev">next</a>
                 {{/if}}
-                <a href="/devices/{{id}}/changestatus" class="toggle">Кнопка</a>
+                <div class="power_controls">
+                    <a href="/devices/{{id}}/changestatus/on" class="toggle">On</a>
+                    <a href="/devices/{{id}}/changestatus/off" class="toggle">Off</a>
+                </div>
             </div>
             {{/if}} {{/each}}
         </div>
@@ -45,5 +48,4 @@
         </form>
     </footer>
 </body>
-
 </html>

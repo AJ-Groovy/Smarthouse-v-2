@@ -4,22 +4,26 @@ module.exports = class TV extends Device {
 
     constructor(settings = {}) {
 
-        super({ type: 'TV'});
+        super({ type: 'TV' });
         this.channels = settings.channels || [];
         this.currentChannel = this.channels[0];
     }
 
     nextChannel() {
 
+        if (!this.isEnabled) {
+            throw new Error('Turn on device first');
+        }
+
         let channelIndex = this.channels.indexOf(this.currentChannel);
 
-        if (channelIndex < channels.length - 1) {
+        if (channelIndex < this.channels.length - 1) {
 
-            this.channelIndex++;
+            channelIndex++;
 
         } else {
 
-            this.channelIndex = 0;
+            channelIndex = 0;
 
         }
 
@@ -29,15 +33,19 @@ module.exports = class TV extends Device {
 
     previousChannel() {
 
+        if (!this.isEnabled) {
+            throw new Error('Turn on device first');
+        }
+        
         let channelIndex = this.channels.indexOf(this.currentChannel);
 
         if (channelIndex > 0) {
 
-            this.channelIndex--;
+            channelIndex--;
 
         } else {
 
-            this.channelIndex = channels.length - 1;
+            channelIndex = this.channels.length - 1;
 
         }
 

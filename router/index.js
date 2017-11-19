@@ -10,7 +10,10 @@ router.get('/devices/', modelApi.getAll);
 router.post('/devices/', modelApi.create);
 
 router.get('/devices/:id', modelApi.get);
-router.get('/devices/:id/changestatus', modelApi.turnOnDevice);
+router.get('/devices/:id/changestatus/on', modelApi.turnOnDevice);
+router.get('/devices/:id/changestatus/off', modelApi.turnOffDevice);
+router.get('/devices/:id/changechannel/next', modelApi.nextChannel);
+router.get('/devices/:id/changechannel/prev', modelApi.previousChannel);
 
 
 // router.post('/devices', );
