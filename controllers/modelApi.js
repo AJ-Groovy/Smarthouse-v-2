@@ -23,7 +23,13 @@ modelControllApi.delete = (req, res) => {
 }
 
 modelControllApi.create = (req, res) => {
-    let device = factory.createDevice(req.body.type, req.body.settings);
+    
+    let settings = {
+        channels : req.body.channels
+    };
+
+    let device = factory.createDevice(req.body.type, settings);
+
     storage.set(device.id, device);
     res.render('index.hbs', storage.getAll());
 }
@@ -44,6 +50,19 @@ modelControllApi.nextChannel = (req, res) => {
 modelControllApi.previousChannel = (req, res) => {
     storage.items[req.params.id].previousChannel();
     res.render('index.hbs', storage.getAll());
+} 
+
+modelControllApi.update = (req, res) => {
+    
+    let device = req.body;
+    if(device.state === 'false'){
+        device.state = 'true';
+        storage.items[device.id].turnOn()
+    } else {
+        device.state = 'false';
+        storage.items[device.id].turnOff()
+    }
+    res.send(JSON.stringify(device));
 } 
 
 module.exports = modelControllApi;

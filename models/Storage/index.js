@@ -26,4 +26,5 @@ module.exports = class Storage {
     clear(){
         this.items = {};
     }
+
 };

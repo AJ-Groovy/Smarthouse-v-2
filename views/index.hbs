@@ -18,13 +18,14 @@
                 <div class="status"></div>
                 <div class="type">{{type}}{{id}}</div>
                 {{#if channels}}
-                    <a href="/devices/{{id}}/changechannel/next">prev</a>
-                    <p>{{currentChannel}}</p>
-                    <a href="/devices/{{id}}/changechannel/prev">next</a>
+                <a href="/devices/{{id}}/changechannel/next">prev</a>
+                <p>{{currentChannel}}</p>
+                <a href="/devices/{{id}}/changechannel/prev">next</a>
                 {{/if}}
                 <div class="power_controls">
                     <a href="/devices/{{id}}/changestatus/on" class="toggle">On</a>
                     <a href="/devices/{{id}}/changestatus/off" class="toggle">Off</a>
+                    <button class="initiator">Switch</button>
                 </div>
             </div>
             {{/if}} {{/each}}
@@ -36,16 +37,21 @@
             <input type="submit">
         </form>
 
-        <form action="/devices" method="post" class="create_device">
+        <form action="/devices" id="factory" method="post" class="create_device">
             <select required size="3" name="type" id="type">
                 <option value="TV">TV</option>
                 <option value="Lights">Lights</option>
                 <option value="Climate">Climate</option>
             </select>
-            <input type="text" name="settings" placeholder="settings">
-
+            <select required multiple form="factory" name="channels" id="setups">
+                <option value="history">History</option>
+                <option value="news">News</option>
+                <option value="music">Music</option>
+            </select>
             <input type="submit">
         </form>
     </footer>
+    <script src="public/main.js"></script>
 </body>
+
 </html>

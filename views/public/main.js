@@ -1,23 +1,29 @@
-let devices = [].slice.call(document.querySelectorAll('.item'));
+let devices = [].slice.call(document.querySelectorAll('.initiator'));
 
-let toggle = (e) => {
+devices.forEach((item) => item.addEventListener('click', (e) => {
 
-    e.preventDefault();
-
-    let itemElement = this.closest('.item'),
+    let target = e.target;
+    let itemElement = target.closest('.item'),
         item = {
-            id: itemElement.getAttribute('id');
+            'id': itemElement.getAttribute('id'),
+            'state' : itemElement.dataset.enabled
         };
+    console.log(item);
 
-    fetch('/devices/', {
+    fetch(`/devices/${item.id}`, {
         headers: {
             'Accept': 'application/json',
             'Content-type': 'application/json'
         },
-        method: 'PUT',
+        method: 'put',
         body: JSON.stringify(item)
-    });
-
-}
-
-devices.addEventListener('click', toggle(e));
+    })
+    .then((res) => { 
+        if(!res.ok){
+            throw new Error(res.statusText);
+        }
+        return res.json(); })
+    .then((json) => {   
+        itemElement.dataset.enabled = json.state;        
+    })
+}));
